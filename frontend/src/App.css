@@ -1,0 +1,213 @@
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Input Panel */
+.input-panel {
+  margin-bottom: 2rem;
+}
+
+.input-panel h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.input-panel .subtitle {
+  color: #666;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.input-panel textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+  margin: 0.75rem 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.drop-zone.drag-over {
+  border-color: #4a90d9;
+  background: #f0f7ff;
+}
+
+.input-panel button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.input-panel button:disabled {
+  background: #93b4e8;
+  cursor: not-allowed;
+}
+
+/* Step Indicator */
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+.step-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.step-dot .dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #e5e7eb;
+  color: #6b7280;
+  transition: all 0.3s;
+}
+
+.step-dot.active .dot {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+.step-dot.completed .dot {
+  background: #16a34a;
+  color: white;
+}
+
+.step-label {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+/* Status Stream */
+.status-stream {
+  margin: 1rem 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.event-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-card.running {
+  border-left: 3px solid #2563eb;
+}
+
+.event-card.complete {
+  border-left: 3px solid #16a34a;
+}
+
+.event-card.error {
+  border-left: 3px solid #dc2626;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-step {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.event-status {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.event-message {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+.event-data {
+  background: #f9fafb;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  overflow-x: auto;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Result Panel */
+.result-panel {
+  margin-top: 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.result-panel h2 {
+  margin: 0 0 1rem;
+}
+
+.report-content {
+  line-height: 1.6;
+}
+
+.report-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+/* Error Banner */
+.error-banner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-banner button {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
