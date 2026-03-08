@@ -2,6 +2,7 @@ import asyncio
 import logging
 import os
 
+from config import USE_PDF_SUMMARIZATION
 from models import ResearchContext, PaperInfo, PaperSummary
 from services.claude import call_claude
 
@@ -9,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 PROMPT_PATH = os.path.join(os.path.dirname(__file__), "..", "prompts", "summarize.txt")
 
-MAX_CONCURRENT = 3
+MAX_CONCURRENT = 1
 MAX_PDF_BASE64_CHARS = 20_000_000  # ~15 MB PDF ≈ ~150K tokens; skip larger ones
 
 
@@ -29,7 +30,13 @@ def _build_single_paper_blocks(paper: PaperInfo, context: ResearchContext) -> li
         )}
     ]
 
-    if paper.pdf_base64 and len(paper.pdf_base64) <= MAX_PDF_BASE64_CHARS:
+    use_pdf = (
+        USE_PDF_SUMMARIZATION
+        and paper.pdf_base64
+        and len(paper.pdf_base64) <= MAX_PDF_BASE64_CHARS
+    )
+
+    if use_pdf:
         blocks.append({
             "type": "document",
             "source": {
@@ -43,7 +50,7 @@ def _build_single_paper_blocks(paper: PaperInfo, context: ResearchContext) -> li
             "text": f"The above PDF is: DOI {paper.doi} - {paper.title}",
         })
     else:
-        if paper.pdf_base64:
+        if paper.pdf_base64 and USE_PDF_SUMMARIZATION:
             logger.warning("PDF too large (%d chars), falling back to abstract for %s",
                            len(paper.pdf_base64), paper.doi)
         blocks.append({

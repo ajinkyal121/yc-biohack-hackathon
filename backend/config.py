@@ -11,3 +11,4 @@ BIORXIV_BASE_URL = os.getenv("BIORXIV_BASE_URL", "https://api.biorxiv.org")
 MAX_PAPERS = int(os.getenv("MAX_PAPERS", "5"))
 POLL_INTERVAL_SECONDS = int(os.getenv("POLL_INTERVAL_SECONDS", "30"))
 MAX_LOOP_ITERATIONS = int(os.getenv("MAX_LOOP_ITERATIONS", "3"))
+USE_PDF_SUMMARIZATION = os.getenv("USE_PDF_SUMMARIZATION", "false").lower() == "true"
